@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: "Manrope", sans-serif;
+    @apply bg-white text-black overflow-x-hidden max-w-[100vw];
+  }
+  h1,
+  h2,
+  h3 {
+    @apply uppercase;
+  }
+  a:focus,
+  button:focus {
+    @apply outline-2 outline-dashed outline-red-700 outline-offset-4;
+  }
+  a:focus:not(:focus-visible),
+  button:focus:not(:focus-visible) {
+    @apply outline-none;
+  }
+
+  body::-webkit-scrollbar {
+    width: 10px;
+    background-color: rgba(0, 0, 0);
+  }
+
+  body::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  }
+
+  body::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    outline: 1px solid slategrey;
+  }
+}
+
+@layer utilities {
+  /* width */
+  .scroll-bar::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  /* Track */
+  /* .scroll-bar::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  } */
+
+  /* Handle */
+  .scroll-bar::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+  }
+
+  /* Handle on hover */
+  .scroll-bar::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+}
