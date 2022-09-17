@@ -9,7 +9,4 @@ function Checkout() {
   );
 }
 
-// prevent user from going to this page if user is session is not present
-// If cart is empty
-
 export default Checkout;
