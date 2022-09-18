@@ -1,11 +1,11 @@
 import React from "react";
-import { getProductBySlug, getProducts } from "../../utils/products";
+import { getProductBySlug, getProducts } from "utils/products";
 
-import Features from "../../components/Features";
-import Container from "../../components/ui/Container";
-import ProductItem from "../../components/ProductItem";
-import ProductItemGallery from "../../components/ProductItemGallery";
-import { TProduct } from "../../types";
+import Features from "components/Features";
+import Container from "components/ui/Container";
+import ProductItem from "components/ProductItem";
+import ProductItemGallery from "components/ProductItemGallery";
+import { TProduct } from "types";
 
 function ProductDetailPage({ product }: { product: TProduct }) {
   return (

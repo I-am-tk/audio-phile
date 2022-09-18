@@ -1,7 +1,8 @@
 import React from "react";
 import Image from "next/image";
+import { TGallery } from "types";
 
-function ProductItemGallery({ gallery }) {
+function ProductItemGallery({ gallery }: { gallery: TGallery }) {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-itemGallery gap-4 mt-24">
       <div className="rounded-md  overflow-hidden">

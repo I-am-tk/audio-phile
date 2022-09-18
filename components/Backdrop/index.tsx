@@ -9,6 +9,7 @@ const backdrop: Variants = {
     opacity: 1,
   },
 };
+
 const Backdrop: React.FC<{ onClose?: () => void; children: React.ReactNode }> = ({
   onClose = () => {},
   children,

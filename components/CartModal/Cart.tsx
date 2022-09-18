@@ -1,17 +1,11 @@
 import React, { useEffect, useState } from "react";
-import Button from "../ui/Button";
+import Button from "components/ui/Button/index";
 import CartItems from "./CartItems";
-import NavLink from "../NavLink";
 import { useRouter } from "next/router";
-import data from "../../data/products.json";
-import { TCartItem } from "../../types";
-import { useSession } from "next-auth/react";
-import { CartItem as CartItemType } from "@prisma/client";
-import { useCartItems } from "../../hooks/useCartItems";
+import { useCartItems } from "hooks/useCartItems";
 import { useSWRConfig } from "swr";
 import axios from "axios";
 export default function Cart({ onClose }: { onClose: () => void }) {
-  const { data: session, status } = useSession();
   const { cartItems, isLoading, isError } = useCartItems();
   const { mutate } = useSWRConfig();
   const router = useRouter();

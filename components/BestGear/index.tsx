@@ -1,12 +1,12 @@
 import Image from "next/image";
 import React, { useEffect } from "react";
 
-import BestProductMobile from "../../public/images/shared/mobile/image-best-gear.jpg";
-import BestProductTablet from "../../public/images/shared/tablet/image-best-gear.jpg";
-import BestProductDesktop from "../../public/images/shared/desktop/image-best-gear.jpg";
-import { motion, type Variants } from "framer-motion";
+import BestProductMobile from "public/images/shared/mobile/image-best-gear.jpg";
 
-// let rendered = false;
+import BestProductTablet from "public/images/shared/tablet/image-best-gear.jpg";
+import BestProductDesktop from "public/images/shared/desktop/image-best-gear.jpg";
+
+import { motion, type Variants } from "framer-motion";
 
 const slideUp: Variants = {
   hidden: {
@@ -25,9 +25,6 @@ const slideUp: Variants = {
 };
 
 function BestGear() {
-  useEffect(() => {
-    // rendered = true;
-  }, []);
   return (
     <motion.section
       variants={slideUp}

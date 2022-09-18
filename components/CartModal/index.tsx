@@ -1,9 +1,9 @@
 import React from "react";
 import { motion, type Variants } from "framer-motion";
 import CartEmpty from "./CartEmpty";
-import Container from "../ui/Container";
+import Container from "components/ui/Container";
 import Cart from "./Cart";
-import { useCartItems } from "../../hooks/useCartItems";
+import { useCartItems } from "hooks/useCartItems";
 
 const modal: Variants = {
   hidden: {

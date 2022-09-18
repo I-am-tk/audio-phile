@@ -1,6 +1,5 @@
 import { CartItem } from "@prisma/client";
 import useSWR from "swr";
-import { getUserCartItemsById } from "../services/cart-item.service";
 import axios from "axios";
 const fetcher = async (url: string) => {
   return await axios.get<{ data: CartItem[] }>(url).then((res) => {

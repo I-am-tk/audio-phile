@@ -1,16 +1,16 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { ReasonPhrases, StatusCodes, getReasonPhrase, getStatusCode } from "http-status-codes";
+import { StatusCodes } from "http-status-codes";
 import { unstable_getServerSession } from "next-auth";
-import { authOptions } from "../../api/auth/[...nextauth]";
-import { getUserById } from "../../../services/user.service";
+import { authOptions } from "pages/api/auth/[...nextauth]";
+import { getUserById } from "services/user.service";
 import {
   createCartItem,
   getCartItemByProdctAndUserId,
   getUserCartItemsById,
   updatedCartItemQunatityById,
-} from "../../../services/cart-item.service";
-import { createCartItemSchema, TCreateCartItem } from "../../../schema/create-cart-item";
-import { validate } from "../../../middlewares/validate";
+} from "services/cart-item.service";
+import { createCartItemSchema, TCreateCartItem } from "schema/create-cart-item";
+import { validate } from "middlewares/validate";
 export async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === "GET") {
     try {

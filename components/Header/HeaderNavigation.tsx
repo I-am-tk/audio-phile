@@ -1,6 +1,6 @@
 import React from "react";
-import Navigation from "../Navigation";
-import NavItem from "../Navigation/NavItem";
+import Navigation from "components/Navigation";
+import NavItem from "components/Navigation/NavItem";
 const navItems = ["home", "headphone", "speakers", "earphones"];
 export const HeaderNavigation = () => {
   return (

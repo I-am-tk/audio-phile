@@ -1,9 +1,9 @@
 import { StatusCodes } from "http-status-codes";
 import { NextApiRequest, NextApiResponse } from "next";
 import { unstable_getServerSession } from "next-auth";
-import { authOptions } from "../auth/[...nextauth]";
-import { getUserById } from "../../../services/user.service";
-import { removeUserCartItemsById } from "../../../services/cart-item.service";
+import { authOptions } from "pages/api/auth/[...nextauth]";
+import { getUserById } from "services/user.service";
+import { removeUserCartItemsById } from "services/cart-item.service";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === "DELETE") {

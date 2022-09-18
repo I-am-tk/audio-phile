@@ -11,6 +11,24 @@ interface TIncludeItem {
   item: string;
 }
 
+export interface TGallery {
+  first: {
+    mobile: TImage;
+    tablet: TImage;
+    desktop: TImage;
+  };
+  second: {
+    mobile: TImage;
+    tablet: TImage;
+    desktop: TImage;
+  };
+  third: {
+    mobile: TImage;
+    tablet: TImage;
+    desktop: TImage;
+  };
+}
+
 export interface TProduct {
   id: number;
   slug: string;
@@ -33,23 +51,7 @@ export interface TProduct {
   description: string;
   features: string;
   includedItems: TIncludeItem[];
-  gallery: {
-    first: {
-      mobile: TImage;
-      tablet: TImage;
-      desktop: TImage;
-    };
-    second: {
-      mobile: TImage;
-      tablet: TImage;
-      desktop: TImage;
-    };
-    third: {
-      mobile: TImage;
-      tablet: TImage;
-      desktop: TImage;
-    };
-  };
+  gallery: TGallery;
 }
 
 export interface TCatagoryLink {

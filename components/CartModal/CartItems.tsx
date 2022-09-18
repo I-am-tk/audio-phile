@@ -1,6 +1,6 @@
 import { CartItem as CartItemType } from "@prisma/client";
 import React from "react";
-import { TCartItem } from "../../types";
+
 import CartItem from "./CartItem";
 
 function CartItems({ items }: { items: CartItemType[] }) {

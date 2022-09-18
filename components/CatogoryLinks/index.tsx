@@ -1,6 +1,5 @@
 import React from "react";
-import { categoryLinks } from "../../data/nav-links";
-import { TCatagoryLink } from "../../types";
+import { categoryLinks } from "data/nav-links";
 import { CatagoryLink } from "./CatagoryLink";
 import { motion, type Variants } from "framer-motion";
 

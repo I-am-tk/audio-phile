@@ -1,15 +1,14 @@
-import Logo from "../Logo/Logo";
-import CartIcon from "../Icons/Cart";
-import HamburgerMenu from "../Icons/HamburgerMenu";
+import Logo from "components/Logo/Logo";
+import CartIcon from "components/Icons/Cart";
+import HamburgerMenu from "components/Icons/HamburgerMenu";
 import NavLinks from "./NavLinks";
-import NavLink from "../NavLink";
-import Container from "../ui/Container";
-import Backdrop from "../Backdrop";
-import CartModal from "../CartModal";
+import NavLink from "components/NavLink";
+import Container from "components/ui/Container";
+import Backdrop from "components/Backdrop";
+import CartModal from "components/CartModal";
 import React, { useState } from "react";
-import Button from "../ui/Button";
 import { useSession, signIn, signOut } from "next-auth/react";
-import { useCartItems } from "../../hooks/useCartItems";
+import { useCartItems } from "hooks/useCartItems";
 
 export default function Header() {
   const { data: session, status } = useSession();

@@ -1,11 +1,11 @@
 import Image from "next/image";
 import React, { useState } from "react";
-import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import Done from "../Icons/Done";
 import Button from "../ui/Button";
 
 import { motion, AnimatePresence, type Variants } from "framer-motion";
 import { useRouter } from "next/router";
+import { useCartItems } from "../../hooks/useCartItems";
 const listVariant: Variants = {
   visible: {
     transition: {
@@ -31,12 +31,21 @@ const itemVariant: Variants = {
   },
 };
 function SuccessfulModal({ onClose }: { onClose: () => void }) {
-  const { items, totalQuantity } = useAppSelector((state) => state.cart);
+  // const { items, totalQuantity } = useAppSelector((state) => state.cart);
+  const { cartItems: items, isLoading, isError } = useCartItems();
   const [showAllItems, setShowAllItems] = useState(false);
   const router = useRouter();
   // const dispatch = useAppDispatch();
-  const showItems = showAllItems ? items : [items[0]];
 
+  if (isLoading) {
+    return <div>Loading</div>;
+  }
+  if (isError || !items) {
+    return <div> something went wrong</div>;
+  }
+
+  const showItems = showAllItems ? items : [items[0]];
+  const totalQuantity = items.reduce((quan, { quantity }) => quan + quantity, 0);
   const clickHandler = (ev: React.MouseEvent) => {
     ev.stopPropagation();
   };

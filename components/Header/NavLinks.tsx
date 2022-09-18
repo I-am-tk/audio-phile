@@ -1,5 +1,5 @@
-import { navLinks } from "../../data/nav-links";
-import NavLink from "../NavLink";
+import { navLinks } from "data/nav-links";
+import NavLink from "components/NavLink";
 function NavLinks() {
   return (
     <nav className="hidden md:block">

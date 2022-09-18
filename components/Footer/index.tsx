@@ -1,6 +1,6 @@
 import React from "react";
 import { FooterSocials } from "./FooterSocials";
-import Logo from "../Logo/Logo";
+import Logo from "components/Logo/Logo";
 
 import FooterNavigation from "./FooterNavigation";
 import Container from "../ui/Container";

@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import Button from "../ui/Button";
+import Button from "components/ui/Button";
 function CartEmpty({ onClose }: { onClose: () => void }) {
   const clickHandler = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     e.stopPropagation();

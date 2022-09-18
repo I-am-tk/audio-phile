@@ -1,11 +1,11 @@
 import Image from "next/image";
 import React from "react";
-import Button from "../ui/Button";
-import YX1Mobile from "../../public/images/home/mobile/image-earphones-yx1.jpg";
-import YX1Tablet from "../../public/images/home/tablet/image-earphones-yx1.jpg";
-import YX1Desktop from "../../public/images/home/desktop/image-earphones-yx1.jpg";
+import Button from "components/ui/Button";
+import YX1Mobile from "public/images/home/mobile/image-earphones-yx1.jpg";
+import YX1Tablet from "public/images/home/tablet/image-earphones-yx1.jpg";
+import YX1Desktop from "public/images/home/desktop/image-earphones-yx1.jpg";
 import Link from "next/link";
-import { motion,type Variants } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 const slideUp: Variants = {
   hidden: {
     opacity: 0,

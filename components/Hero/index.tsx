@@ -1,10 +1,10 @@
 import Image from "next/image";
 import React from "react";
-import Button from "../ui/Button";
+import Button from "components/ui/Button";
 import { motion } from "framer-motion";
-import HeroImgMobile from "../../public/images/home/mobile/image-hero-1.jpg";
-import HeroImgTablet from "../../public/images/home/tablet/image-hero-1.jpg";
-import HeroImgDesktop from "../../public/images/home/desktop/image-hero.jpg";
+import HeroImgMobile from "public/images/home/mobile/image-hero-1.jpg";
+import HeroImgTablet from "public/images/home/tablet/image-hero-1.jpg";
+import HeroImgDesktop from "public/images/home/desktop/image-hero.jpg";
 
 import Container from "../ui/Container";
 import Link from "next/link";

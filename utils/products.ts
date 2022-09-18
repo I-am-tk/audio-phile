@@ -1,12 +1,9 @@
 import path from "path";
-import { TProduct } from "../types";
+import { TProduct } from "types";
 import { readJsonData } from "./file";
 
 const root = path.join();
 const productJsonFilePath = path.join(root, "data", "products.json");
-
-const sortByNewest = <TType extends { new: boolean }>(a: TType, b: TType) =>
-  Number(b.new) - Number(a.new);
 
 export const getProducts = () => {
   const products = readJsonData(productJsonFilePath).products;
@@ -15,9 +12,7 @@ export const getProducts = () => {
 
 export const getProductsByCategory = (category: string): TProduct[] => {
   const products = getProducts();
-  const filteredProducts = products.filter((product) => product.category === category);
-  const sortedFilteredProducts = filteredProducts.sort(sortByNewest);
-  return sortedFilteredProducts;
+  return products.filter((product) => product.category === category);
 };
 
 export const getProductBySlug = (slug: string) => {

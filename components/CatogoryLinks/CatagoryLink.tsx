@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { TCatagoryLink } from "../../types";
+import { TCatagoryLink } from "types";
 
 interface TCategoryLinkProps extends TCatagoryLink {}
 import { motion, Variants } from "framer-motion";

@@ -1,5 +1,5 @@
 import { Prisma } from "@prisma/client";
-import { prisma } from "../lib/prisma";
+import { prisma } from "lib/prisma";
 
 export const getCartItemById = async (cartItemId: string) => {
   return await prisma.cartItem.findUnique({

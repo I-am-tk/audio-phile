@@ -1,9 +1,9 @@
 import React from "react";
-import Product from "../../components/Products";
-import { getProductsByCategory, getCategories } from "../../utils/products";
+import Product from "components/Products";
+import { getProductsByCategory, getCategories } from "utils/products";
 import { useRouter } from "next/router";
-import Container from "../../components/ui/Container";
-import { TProduct } from "../../types";
+import Container from "components/ui/Container";
+import { TProduct } from "types";
 
 function CatagoryPage({ products }: { products: TProduct[] }) {
   const {

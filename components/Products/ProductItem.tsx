@@ -1,10 +1,10 @@
 import Image from "next/image";
 import React from "react";
 
-import Button from "../ui/Button";
-import NavLink from "../NavLink";
+import Button from "components/ui/Button";
+import NavLink from "components/NavLink";
 import { useRouter } from "next/router";
-import { TProduct } from "../../types";
+import { TProduct } from "types";
 
 function ProductItem({ item, showLeft = true }: { item: TProduct; showLeft?: boolean }) {
   const {

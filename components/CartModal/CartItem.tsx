@@ -1,11 +1,9 @@
 import { CartItem as CartItemType } from "@prisma/client";
 import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
-import useSWR, { useSWRConfig } from "swr";
-import axios, { AxiosResponse } from "axios";
-import { TCreateCartItem } from "../../schema/create-cart-item";
+import { useSWRConfig } from "swr";
+import axios from "axios";
 import { useDebounce, useUpdateEffect } from "usehooks-ts";
-import { TCartItem } from "../../types";
 function CartItem({ item }: { item: CartItemType }) {
   // It would be better it I maintain a state
   const [product, setProduct] = useState(item);

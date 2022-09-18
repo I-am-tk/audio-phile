@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import Image from "next/image";
-import Button from "../ui/Button";
-import { TProduct } from "../../types";
+import Button from "components/ui/Button";
+import { TProduct } from "types";
 import { useSession, signIn, signOut } from "next-auth/react";
 import axios, { AxiosResponse } from "axios";
 import useSwr, { useSWRConfig } from "swr";
-import { TCreateCartItem } from "../../schema/create-cart-item";
+import { TCreateCartItem } from "schema/create-cart-item";
 function ProductItem({ product }: { product: TProduct }) {
-  // const dispatch = useAppDispatch();
   const { data, status } = useSession();
   const [quantity, setQuantity] = useState(1);
   const increaseQuantityHandler = () => {
@@ -36,6 +35,7 @@ function ProductItem({ product }: { product: TProduct }) {
       productId: product.id,
       cartImage: product.cartImage,
     });
+    setQuantity(1);
     mutate("/api/cart");
   };
   return (

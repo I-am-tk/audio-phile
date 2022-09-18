@@ -1,24 +1,23 @@
 import React, { useState } from "react";
-import Legend from "../ui/Form/Legend";
-import Label from "../ui/Form/Label";
-import Input from "../ui/Form/Input";
-import Button from "../ui/Button";
-import Cod from "../Icons/Cod";
+import Legend from "components/ui/Form/Legend";
+import Label from "components/ui/Form/Label";
+import Input from "components/ui/Form/Input";
+import Button from "components/ui/Button";
+import Cod from "components/Icons/Cod";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
 import { CheckoutInputFields, inputFieldsSchema } from "../../schema/checkout-form-field";
-import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import CheckoutSuccefulModal from "../CheckoutSuccefulModal";
 import Backdrop from "../Backdrop";
-import { clearCart } from "../../store/cart-slice";
 import { useRouter } from "next/router";
+import axios from "axios";
+import { useSWRConfig } from "swr";
 
 function CheckoutForm() {
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
-  const dispatch = useAppDispatch();
   const router = useRouter();
+  const { mutate } = useSWRConfig();
   const {
     register,
     handleSubmit,
@@ -38,12 +37,17 @@ function CheckoutForm() {
   };
 
   const modalCloseHandler = () => {
-    dispatch(clearCart());
+    const clearCart = async () => {
+      await axios.delete("/api/cart/clear");
+      return [];
+    };
+    mutate("/api/cart", clearCart, {
+      optimisticData: [],
+      rollbackOnError: true,
+    });
     setShowSuccessMessage(false);
     router.replace("/");
   };
-
-  const { totalQuantity } = useAppSelector((state) => state.cart);
 
   return (
     <React.Fragment>

@@ -1,7 +1,7 @@
 import React from "react";
-import { TProduct } from "../../types";
-import BestGear from "../BestGear";
-import CatagoryLinks from "../CatogoryLinks";
+import { TProduct } from "types";
+import BestGear from "components/BestGear";
+import CatagoryLinks from "components/CatogoryLinks";
 
 import ProductItem from "./ProductItem";
 const Product = ({ products }: { products: TProduct[] }) => {

@@ -1,6 +1,6 @@
 import { NextApiHandler, NextApiRequest, NextApiResponse } from "next";
 
-import { TRequestMethod } from "../types";
+import { TRequestMethod } from "types";
 
 export const validate = (schema: any, handler: NextApiHandler, methods: TRequestMethod[]) => {
   return async (req: NextApiRequest, res: NextApiResponse) => {

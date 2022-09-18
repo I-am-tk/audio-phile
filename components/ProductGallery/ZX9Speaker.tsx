@@ -1,10 +1,10 @@
 import Image from "next/image";
 import React from "react";
-import Button from "../ui/Button";
+import Button from "components/ui/Button";
 
-import ZX9Mobile from "../../public/images/home/mobile/image-speaker-zx9.png";
-import ZX9Tablet from "../../public/images/home/tablet/image-speaker-zx9.png";
-import ZX9Desktop from "../../public/images/home/desktop/image-speaker-zx9.png";
+import ZX9Mobile from "public/images/home/mobile/image-speaker-zx9.png";
+import ZX9Tablet from "public/images/home/tablet/image-speaker-zx9.png";
+import ZX9Desktop from "public/images/home/desktop/image-speaker-zx9.png";
 import Link from "next/link";
 import { motion, Variants } from "framer-motion";
 
