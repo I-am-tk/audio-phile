@@ -30,7 +30,7 @@ function CheckoutForm() {
     },
   });
 
-  const paymentMethod = watch("paymentMethod", "eMoney");
+  const paymentMethod = watch("paymentMethod");
 
   const onSubmit: SubmitHandler<CheckoutInputFields> = (data) => {
     setShowSuccessMessage(true);
@@ -215,7 +215,7 @@ function CheckoutForm() {
                 {paymentMethod === "eMoney" && (
                   <>
                     <div>
-                      <Label htmlFor="eMoneyNumber" error={errors?.eMoneyNumber}>
+                      <Label htmlFor="eMoneyNumber" error={(errors as any)?.eMoneyNumber}>
                         e-Money Number
                       </Label>
                       <Input
@@ -225,11 +225,11 @@ function CheckoutForm() {
                         name="eMoneyNumber"
                         validation={{ required: true }}
                         register={register}
-                        error={errors?.eMoneyNumber}
+                        error={(errors as any)?.eMoneyNumber}
                       />
                     </div>
                     <div>
-                      <Label htmlFor="eMoneyPin" error={errors?.eMoneyPin}>
+                      <Label htmlFor="eMoneyPin" error={(errors as any)?.eMoneyPin}>
                         e-Money PIN
                       </Label>
                       <Input
@@ -239,7 +239,7 @@ function CheckoutForm() {
                         name="eMoneyPin"
                         validation={{ required: true }}
                         register={register}
-                        error={errors?.eMoneyPin}
+                        error={(errors as any)?.eMoneyPin}
                       />
                     </div>
                   </>
