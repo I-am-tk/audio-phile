@@ -3,8 +3,10 @@ import CatagoryLinks from "components/CatogoryLinks";
 import ProductGallery from "components/ProductGallery";
 import Hero from "components/Hero";
 import Container from "components/ui/Container";
+import { unstable_getServerSession } from "next-auth/next";
 import { useSession, signIn, signOut, getSession } from "next-auth/react";
 import { GetServerSideProps } from "next";
+import { authOptions } from "./api/auth/[...nextauth]";
 export default function Home() {
   const { data: session, status } = useSession();
   return (
@@ -22,7 +24,7 @@ export default function Home() {
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const session = await getSession(context);
+  const session = await unstable_getServerSession(context.req, context.res, authOptions);
 
   return {
     props: {
