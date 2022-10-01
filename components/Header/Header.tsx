@@ -6,7 +6,7 @@ import NavLink from "components/NavLink";
 import Container from "components/ui/Container";
 import Backdrop from "components/Backdrop";
 import CartModal from "components/CartModal";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { useCartItems } from "hooks/useCartItems";
 
@@ -14,7 +14,7 @@ export default function Header() {
   const { data: session, status } = useSession();
   const [isCartOpen, setIsCartOpen] = useState(false);
   const { cartItems, isLoading, isError } = useCartItems();
-
+  const [showMenu, setShowMenu] = useState(false);
   const modalOpenHandler = () => {
     setIsCartOpen(true);
   };
@@ -26,17 +26,27 @@ export default function Header() {
     ? cartItems.reduce((total, { quantity }) => total + quantity, 0)
     : 0;
 
+  useEffect(() => {
+    if (showMenu) {
+      document.body.style.height = "100vh";
+      document.body.style.overflowY = "hidden";
+    } else {
+      document.body.style.height = "";
+      document.body.style.overflowY = "";
+    }
+  }, [showMenu]);
+
   return (
     <header className="bg-black py-8 border-[1px] border-divider ">
       <Container>
         <div className="flex gap-4 items-center justify-between px-6  max-w-[72rem] m-auto">
           <NavLink href={"/"} className="sm:mr-[2.625rem] md:hidden">
-            <HamburgerMenu />
+            <HamburgerMenu onClick={() => setShowMenu(true)} />
           </NavLink>
           <NavLink href={"/"} className="sm:mr-auto md:mr-0">
             <Logo />
           </NavLink>
-          <NavLinks />
+          <NavLinks open={showMenu} onClose={() => setShowMenu(false)} />
           <div className="flex align-center gap-2 ">
             <div className="hidden xs:flex">
               {session && (

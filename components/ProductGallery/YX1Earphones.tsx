@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "next/future/image";
 import React from "react";
 import Button from "components/ui/Button";
 import YX1Mobile from "public/images/home/mobile/image-earphones-yx1.jpg";
@@ -40,18 +40,14 @@ const YX1Earphones = () => {
             <Image
               src={YX1Tablet}
               alt="YX1 earphonoe"
-              className="rounded-md"
-              layout="responsive"
-              objectFit="cover"
+              className="rounded-md object-cover object-center"
             />
           </div>
           <div className="hidden md:block">
             <Image
               src={YX1Desktop}
               alt="YX1 earphonoe"
-              className="rounded-md"
-              layout="responsive"
-              objectFit="cover"
+              className="rounded-md object-cover object-center"
             />
           </div>
         </div>

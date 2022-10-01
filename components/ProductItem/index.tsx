@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Image from "next/image";
+import Image from "next/future/image";
 import Button from "components/ui/Button";
 import { TProduct } from "types";
 import { useSession, signIn, signOut } from "next-auth/react";
@@ -41,37 +41,21 @@ function ProductItem({ product }: { product: TProduct }) {
   return (
     <div className="md:flex gap-8  md:gap-32">
       <div className="sm:basis-[40%] md:basis-[50%]">
-        <div className="md:hidden">
-          <Image
-            src={product.image.mobile.src}
-            alt="xx9 earphone"
-            layout="responsive"
-            objectFit="cover"
-            objectPosition={"center"}
-            width={product.image.mobile.width}
-            height={product.image.mobile.height}
-          />
-        </div>
-        {/* <div className="hidden sm:block md:hidden">
-          <Image
-            src={product.image.tablet.src}
-            alt="xx9 earphone"
-            layout="responsive"
-            width={product.image.tablet.width}
-            height={product.image.tablet.height}
-          />
-        </div> */}
-        <div className="hidden md:block">
-          <Image
-            src={product.image.desktop.src}
-            alt="xx9 earphone"
-            layout="responsive"
-            objectFit="cover"
-            objectPosition={"center"}
-            width={product.image.desktop.width}
-            height={product.image.desktop.height}
-          />
-        </div>
+        <Image
+          src={product.image.mobile.src}
+          alt="xx9 earphone"
+          width={product.image.mobile.width}
+          height={product.image.mobile.height}
+          className="object-cover object-center h-full w-full md:hidden"
+        />
+
+        <Image
+          src={product.image.desktop.src}
+          alt="xx9 earphone"
+          width={product.image.desktop.width}
+          height={product.image.desktop.height}
+          className="object-cover object-center h-full w-full hidden md:block"
+        />
       </div>
       <div className="sm:basis-[60%] md:basis-[50%] mt-8">
         <h2
