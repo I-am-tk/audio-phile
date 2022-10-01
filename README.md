@@ -2,7 +2,7 @@
 
 An audio gear e-commerce web application.
 
-![Audiophile]("/public/audiophile.png");
+![Audiophile](/public/audiophile.png);
 
 Visit [Audiophile](https://audio-phile-orcin.vercel.app/)
 
