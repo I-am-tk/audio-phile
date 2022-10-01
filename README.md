@@ -2,11 +2,15 @@
 
 An audio gear e-commerce web application.
 
-![Audiophile](/public/audiophile.png);
+![Audiophile](/public/audiophile.png)
 
 Visit [Audiophile](https://audio-phile-orcin.vercel.app/)
 
-I intended to create a full-stack application after learning about backend development. I, therefore, thought about developing an online store and a social media application. I found a Figma design of a challenge on the Frontend Mentor website that I used to create the e-commerce application. Here is the link to that challenge [Audiophile]();
+I intended to create a full-stack application after learning about backend development. I, therefore, thought about developing an online store and a social media application. I found a Figma design of a challenge on the Frontend Mentor website that I used to create the e-commerce application. Here is the link to that challenge [Audiophile](https://www.frontendmentor.io/challenges/audiophile-ecommerce-website-C8cuSd_wx).
+
+- All pages are pre-rendered to get the best SEO.
+- Implemented Authentication with NextAuth with GitHub provider and stored user session in MongoDB using Prisma adaptor.
+- Incorporated Prisma ORM, which provides type-safe database queries and produces types for the schema, and Zod to validate user-submitted data.
 
 ## TechStack
 
