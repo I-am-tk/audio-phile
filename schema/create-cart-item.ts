@@ -10,6 +10,7 @@ export const createCartItemSchema = z.object({
   quantity: z.number().min(0),
   productId: z.number().min(1),
   cartImage: z.string().min(1),
+  stripeId: z.string().min(1),
 });
 
 export type TCreateCartItem = z.infer<typeof createCartItemSchema>;

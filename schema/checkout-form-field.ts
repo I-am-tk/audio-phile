@@ -3,7 +3,7 @@ import { z } from "zod";
 const phoneRegex =
   /^(\+?\d{0,4})?\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{4}\)?)?$/;
 
-const InputWithOutPaymentMethodSchema = z.object({
+export const inputFieldsSchema = z.object({
   name: z
     .string({
       required_error: "Name is required",
@@ -47,26 +47,5 @@ const InputWithOutPaymentMethodSchema = z.object({
     })
     .min(3, "Country should be more than 3 char"),
 });
-
-export const inputFieldsSchema = z.discriminatedUnion("paymentMethod", [
-  z
-    .object({
-      paymentMethod: z.literal("eMoney"),
-      eMoneyNumber: z
-        .string({
-          required_error: "E-money Number is required",
-          invalid_type_error: "E-money Number must be a number",
-        })
-        .regex(/\d{10}/, "E-money Number is invalid"),
-      eMoneyPin: z
-        .string({
-          required_error: "E-money pin is required",
-          invalid_type_error: "E-money pin must be a string",
-        })
-        .regex(/\d{4}/, "E-money Pin is invalid"),
-    })
-    .merge(InputWithOutPaymentMethodSchema),
-  z.object({ paymentMethod: z.literal("cod") }).merge(InputWithOutPaymentMethodSchema),
-]);
 
 export type CheckoutInputFields = z.infer<typeof inputFieldsSchema>;

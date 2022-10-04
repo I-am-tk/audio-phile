@@ -9,8 +9,6 @@ export const getCartItemById = async (cartItemId: string) => {
   });
 };
 
-// export const getCartItemByUserCart =
-
 export const createCartItem = async (data: Prisma.CartItemCreateArgs["data"]) => {
   return await prisma.cartItem.create({
     data,

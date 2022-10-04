@@ -7,33 +7,31 @@ import Cod from "components/Icons/Cod";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { CheckoutInputFields, inputFieldsSchema } from "../../schema/checkout-form-field";
+import { type CheckoutInputFields, inputFieldsSchema } from "../../schema/checkout-form-field";
 import CheckoutSuccefulModal from "../CheckoutSuccefulModal";
 import Backdrop from "../Backdrop";
 import { useRouter } from "next/router";
 import axios from "axios";
 import { useSWRConfig } from "swr";
+import getStripe from "lib/get-stripe";
+import { useCartItems } from "hooks/useCartItems";
 
 function CheckoutForm() {
+  const { cartItems: items, isLoading, isError } = useCartItems();
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const router = useRouter();
   const { mutate } = useSWRConfig();
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm<CheckoutInputFields>({
     resolver: zodResolver(inputFieldsSchema),
-    defaultValues: {
-      paymentMethod: "eMoney",
-    },
   });
 
-  const paymentMethod = watch("paymentMethod");
-
   const onSubmit: SubmitHandler<CheckoutInputFields> = (data) => {
-    setShowSuccessMessage(true);
+    // setShowSuccessMessage(true);
+    redirectToCheckout();
   };
 
   const modalCloseHandler = () => {
@@ -47,6 +45,24 @@ function CheckoutForm() {
     });
     setShowSuccessMessage(false);
     router.replace("/");
+  };
+
+  const redirectToCheckout = async () => {
+    const {
+      data: { id },
+    } = await axios.post("/api/checkout_sessions", {
+      items: (items ?? []).map((item) => ({
+        price: item.stripeId,
+        quantity: item.quantity,
+      })),
+    });
+
+    const stripe = await getStripe();
+    if (stripe) {
+      await stripe.redirectToCheckout({
+        sessionId: id,
+      });
+    }
   };
 
   return (
@@ -163,101 +179,6 @@ function CheckoutForm() {
                 </div>
               </div>
             </fieldset>
-            <fieldset>
-              <Legend>Payment deatils</Legend>
-              <div className="grid gap-4 sm:grid-cols-2">
-                <p
-                  className="text-[0.75rem]
-              font-bold -mb-2 sm:mb-0"
-                >
-                  Payment Method
-                </p>
-                <div className="mb-4 grid gap-4 ">
-                  <div
-                    className={`${
-                      paymentMethod === "eMoney" ? "border-accent" : "border-inputBorder"
-                    } block border-[1px]  rounded-md`}
-                  >
-                    <label
-                      htmlFor="eMoney"
-                      className={`text-left py-4 font-bold text-[0.875rem] block grow cursor-pointer px-4 `}
-                    >
-                      <input
-                        id="eMoney"
-                        value={"eMoney"}
-                        type={"radio"}
-                        className="cursor-pointer mr-4"
-                        {...register("paymentMethod")}
-                      />
-                      e-Money
-                    </label>
-                  </div>
-                  <div
-                    className={`${
-                      paymentMethod === "cod" ? "border-accent" : "border-inputBorder"
-                    } block border-[1px]  rounded-md`}
-                  >
-                    <label
-                      htmlFor="cod"
-                      className="text-left py-4 font-bold text-[0.875rem] block grow cursor-pointer px-4"
-                    >
-                      <input
-                        id="cod"
-                        value={"cod"}
-                        type={"radio"}
-                        className="cursor-pointer mr-4"
-                        {...register("paymentMethod")}
-                      />
-                      Cash on Delivery
-                    </label>
-                  </div>
-                </div>
-                {paymentMethod === "eMoney" && (
-                  <>
-                    <div>
-                      <Label htmlFor="eMoneyNumber" error={(errors as any)?.eMoneyNumber}>
-                        e-Money Number
-                      </Label>
-                      <Input
-                        placeholder="2345678910"
-                        type="text"
-                        id="eMoneyNumber"
-                        name="eMoneyNumber"
-                        validation={{ required: true }}
-                        register={register}
-                        error={(errors as any)?.eMoneyNumber}
-                      />
-                    </div>
-                    <div>
-                      <Label htmlFor="eMoneyPin" error={(errors as any)?.eMoneyPin}>
-                        e-Money PIN
-                      </Label>
-                      <Input
-                        placeholder="6891"
-                        type="text"
-                        id="eMoneyPin"
-                        name="eMoneyPin"
-                        validation={{ required: true }}
-                        register={register}
-                        error={(errors as any)?.eMoneyPin}
-                      />
-                    </div>
-                  </>
-                )}
-                {paymentMethod === "cod" && (
-                  <div className="flex items-center gap-6 sm:col-span-2">
-                    <div>
-                      <Cod />
-                    </div>
-                    <p className="text-[0.9375rem] leading-[1.66] text-text">
-                      The &apos;Cash on Delivery&apos; option enables you to pay in cash when our
-                      delivery courier arrives at your residence. Just make sure your address is
-                      correct so that your order will not be cancelled.
-                    </p>
-                  </div>
-                )}
-              </div>
-            </fieldset>
           </div>
         </div>
         <div>
@@ -296,11 +217,11 @@ function CheckoutForm() {
           </div>
         </div>
       </form>
-      {showSuccessMessage && (
+      {/* {showSuccessMessage && (
         <Backdrop onClose={modalCloseHandler}>
           <CheckoutSuccefulModal onClose={modalCloseHandler} />
         </Backdrop>
-      )}
+      )} */}
     </React.Fragment>
   );
 }

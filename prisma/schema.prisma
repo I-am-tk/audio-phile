@@ -55,6 +55,7 @@ model CartItem {
   cartImage String
   userId    String
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  stripeId  String
 
   @@map("cartItems")
 }

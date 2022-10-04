@@ -52,6 +52,7 @@ export interface TProduct {
   features: string;
   includedItems: TIncludeItem[];
   gallery: TGallery;
+  stripeId: string;
 }
 
 export interface TCatagoryLink {

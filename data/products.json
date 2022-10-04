@@ -2,6 +2,7 @@
   "products": [
     {
       "id": 1,
+      "stripeId": "price_1LonrQSBSBDpzpWjCviWMb8g",
       "slug": "yx1-earphones",
       "name": "YX1 Wireless Earphones",
       "shortName": "YX1",
@@ -154,6 +155,7 @@
       "id": 2,
       "slug": "xx99-mark-one-headphones",
       "name": "XX99 Mark I Headphones",
+      "stripeId": "price_1LontASBSBDpzpWjahraeLws",
       "shortName": "XX99 MK I",
       "image": {
         "mobile": {
@@ -298,6 +300,7 @@
     },
     {
       "id": 3,
+      "stripeId": "price_1LonuDSBSBDpzpWjZZ1guLnL",
       "slug": "xx59-headphones",
       "name": "XX59 Headphones",
       "shortName": "XX59",
@@ -446,6 +449,7 @@
       "id": 4,
       "slug": "xx99-mark-two-headphones",
       "name": "XX99 Mark II Headphones",
+      "stripeId": "price_1Lonv1SBSBDpzpWjYfC1kBwO",
       "shortName": "XX99 MK II",
       "image": {
         "mobile": {
@@ -595,6 +599,7 @@
     {
       "id": 5,
       "slug": "zx7-speaker",
+      "stripeId": "price_1LonvkSBSBDpzpWjVY8wyurW",
       "name": "ZX7 Speaker",
       "shortName": "ZX7",
       "image": {
@@ -746,6 +751,7 @@
       "id": 6,
       "slug": "zx9-speaker",
       "name": "ZX9 Speaker",
+      "stripeId": "price_1LonwiSBSBDpzpWjnZmwgpCO",
       "shortName": "ZX9",
       "image": {
         "mobile": {
