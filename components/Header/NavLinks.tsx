@@ -6,7 +6,7 @@ function NavLinks({ open = false, onClose = () => {} }: { open: boolean; onClose
 
   return (
     <nav
-      className={`fixed z-50 bg-black top-0 left-0 bottom-0  right-0 pt-16 md:static md:p-0 flex flex-col transform duration-300 md:opacity-1 ${
+      className={`fixed z-50 bg-black top-0 left-0 bottom-0  right-0 pt-24 md:static md:p-0 flex flex-col transform duration-300 md:opacity-1 ${
         !open
           ? "-translate-x-full opacity-0 md:opacity-1 md:translate-x-0"
           : "md:opacity-1 md:translate-x-0"
@@ -22,11 +22,11 @@ function NavLinks({ open = false, onClose = () => {} }: { open: boolean; onClose
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
-          stroke-width="1.5"
+          strokeWidth="1.5"
           stroke="currentColor"
           className="w-6 h-6"
         >
-          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
         </svg>
       </button>
       <ul className="flex flex-col md:flex-row px-8 gap-4">
@@ -55,7 +55,7 @@ function NavLinks({ open = false, onClose = () => {} }: { open: boolean; onClose
         {!session && (
           <button
             type="button"
-            className="border-[1px] border-transparent  text-accentLight hover:text-accent  rounded-sm font-bold  px-4 py-2"
+            className="border-[1px] border-transparent text-gray hover:text-accent rounded-sm font-bold  px-4 py-2 bg-accent w-full"
             onClick={() => signIn()}
           >
             Signin

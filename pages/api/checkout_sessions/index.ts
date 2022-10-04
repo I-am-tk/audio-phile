@@ -6,10 +6,11 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
 });
 
 const handler: NextApiHandler = async (req, res) => {
-  if (req.method === "post") {
+  console.log("Here", req.method);
+  if (req.method === "POST") {
     try {
       const session = await stripe.checkout.sessions.create({
-        currency: "usd",
+        currency: "inr",
         mode: "payment",
         payment_method_types: ["card"],
         line_items: req.body.items ?? [],

@@ -18,8 +18,6 @@ import { useCartItems } from "hooks/useCartItems";
 
 function CheckoutForm() {
   const { cartItems: items, isLoading, isError } = useCartItems();
-  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
-  const router = useRouter();
   const { mutate } = useSWRConfig();
   const {
     register,
@@ -32,9 +30,6 @@ function CheckoutForm() {
   const onSubmit: SubmitHandler<CheckoutInputFields> = (data) => {
     // setShowSuccessMessage(true);
     redirectToCheckout();
-  };
-
-  const modalCloseHandler = () => {
     const clearCart = async () => {
       await axios.delete("/api/cart/clear");
       return [];
@@ -43,8 +38,6 @@ function CheckoutForm() {
       optimisticData: [],
       rollbackOnError: true,
     });
-    setShowSuccessMessage(false);
-    router.replace("/");
   };
 
   const redirectToCheckout = async () => {
