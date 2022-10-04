@@ -34,6 +34,7 @@ function ProductItem({ product }: { product: TProduct }) {
       quantity: quantity,
       productId: product.id,
       cartImage: product.cartImage,
+      stripeId: product.stripeId,
     });
     setQuantity(1);
     mutate("/api/cart");
